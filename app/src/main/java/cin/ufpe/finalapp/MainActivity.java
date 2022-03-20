@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Bundle;
-import android.view.View;
 
 import cin.ufpe.finalapp.databinding.ActivityMainBinding;
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
@@ -69,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonGoListApps.setOnClickListener(view -> {
             startActivity(new Intent(this, AppsListActivity.class));
         });
+
+        Intent intent = new Intent(this, TopActivityIntentService.class);
+        startService(intent);
     }
 
     @Override
@@ -77,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
         wifiReceiver = new WifiBroadcast(viewModel);
         IntentFilter intentFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
         registerReceiver(wifiReceiver, intentFilter);
+
+        ActivityBroadcast activityBroadcast = new ActivityBroadcast();
+        IntentFilter intentFilter2 = new IntentFilter(ActivityManager.META_HOME_ALTERNATE);
+        registerReceiver(activityBroadcast, intentFilter2);
 
         batteryReceiver = new BatteryBroadcast(viewModel);
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
@@ -94,6 +104,20 @@ public class MainActivity extends AppCompatActivity {
         if (batteryReceiver != null){
             unregisterReceiver(batteryReceiver);
             batteryReceiver = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    public class ActivityBroadcast extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Intent it = new Intent(context, TopActivityIntentService.class);
+            startService(it);
         }
     }
 }

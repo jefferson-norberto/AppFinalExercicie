@@ -7,11 +7,77 @@
     tools:context=".AppsListActivity"
     android:layout_margin="16dp">
 
-    <ListView
-        android:id="@+id/listApps"
+    <TextView
+        android:id="@+id/textApps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="List of Applications:"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/listApps"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listApps"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textApps" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/listApps"
+        android:text="Legend: "
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_enable"
+        app:layout_constraintStart_toEndOf="@id/icon_enable"
+        app:layout_constraintTop_toTopOf="@+id/icon_enable" />
+
+    <ImageView
+        android:id="@+id/icon_disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/enable"
+        app:layout_constraintTop_toTopOf="@+id/enable"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disable"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/icon_disable"
+        app:layout_constraintStart_toEndOf="@id/icon_disable"
+        app:layout_constraintTop_toTopOf="@+id/icon_disable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
