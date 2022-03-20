@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/iconWifi"
+        android:src="@drawable/ic_wait_wifi_changed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iconBatteryHealth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textChangedWifi"/>
+
+    <TextView
+        android:id="@+id/textChangedWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wait_wifi_change"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iconWifi"
+        app:layout_constraintStart_toEndOf="@id/iconWifi"
+        app:layout_constraintTop_toTopOf="@+id/iconWifi" />
+
+    <ImageView
+        android:id="@+id/iconBatteryHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_battery_saver"
+        app:layout_constraintBottom_toTopOf="@id/iconBattery"
+        app:layout_constraintEnd_toEndOf="@+id/iconWifi"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/iconWifi"
+        app:layout_constraintTop_toBottomOf="@id/iconWifi" />
+
+    <TextView
+        android:id="@+id/textBatteryHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Battery Health"
+        app:layout_constraintBottom_toBottomOf="@+id/iconBatteryHealth"
+        app:layout_constraintStart_toStartOf="@id/textChangedWifi"
+        app:layout_constraintTop_toTopOf="@+id/iconBatteryHealth" />
+
+    <ImageView
+        android:id="@+id/iconBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_battery"
+        app:layout_constraintBottom_toTopOf="@id/iconPorcentBattery"
+        app:layout_constraintEnd_toEndOf="@+id/iconBatteryHealth"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/iconBatteryHealth"
+        app:layout_constraintTop_toBottomOf="@id/iconBatteryHealth" />
+
+    <TextView
+        android:id="@+id/textBatteryStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Battery State"
+        app:layout_constraintBottom_toBottomOf="@id/iconBattery"
+        app:layout_constraintStart_toStartOf="@+id/textBatteryHealth"
+        app:layout_constraintTop_toTopOf="@id/iconBattery" />
+
+    <ImageView
+        android:id="@+id/iconPorcentBattery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_battery"
+        app:layout_constraintBottom_toTopOf="@id/iconUsb"
+        app:layout_constraintEnd_toEndOf="@+id/iconBattery"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/iconBattery"
+        app:layout_constraintTop_toBottomOf="@id/iconBattery" />
+
+    <TextView
+        android:id="@+id/textPorcentBatttery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        app:layout_constraintBottom_toBottomOf="@+id/iconPorcentBattery"
+        app:layout_constraintStart_toStartOf="@+id/textBatteryStatus"
+        app:layout_constraintTop_toTopOf="@+id/iconPorcentBattery" />
+
+    <ImageView
+        android:id="@+id/iconUsb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_usb"
+        app:layout_constraintBottom_toTopOf="@id/iconPlug"
+        app:layout_constraintTop_toBottomOf="@id/iconPorcentBattery"
+        app:layout_constraintStart_toStartOf="@id/iconPorcentBattery"
+        app:layout_constraintEnd_toEndOf="@id/iconPorcentBattery"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+    <TextView
+        android:id="@+id/textUsb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is True"
+        app:layout_constraintBottom_toBottomOf="@id/iconUsb"
+        app:layout_constraintStart_toStartOf="@id/textBatteryStatus"
+        app:layout_constraintTop_toTopOf="@id/iconUsb" />
+
+    <ImageView
+        android:id="@+id/iconPlug"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_plug"
+        app:layout_constraintBottom_toTopOf="@id/buttonGoListApps"
+        app:layout_constraintTop_toBottomOf="@id/iconUsb"
+        app:layout_constraintStart_toStartOf="@id/iconUsb"
+        app:layout_constraintEnd_toEndOf="@id/iconUsb"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+    <TextView
+        android:id="@+id/textPlug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is True"
+        app:layout_constraintBottom_toBottomOf="@id/iconPlug"
+        app:layout_constraintStart_toStartOf="@id/textUsb"
+        app:layout_constraintTop_toTopOf="@id/iconPlug" />
+
+    <TextView
+        android:id="@+id/textTimeForCharger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time for charger: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textPlug"
+        app:layout_constraintBottom_toTopOf="@id/buttonGoListApps"/>
+
+    <Button
+        android:id="@+id/buttonGoListApps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List of Apps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
