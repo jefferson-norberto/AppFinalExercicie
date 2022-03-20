@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -29,6 +30,9 @@ public class AppsListActivity extends AppCompatActivity {
         applicationAdapter = new ApplicationAdapter(listOfApps(), this);
         binding.listApps.setLayoutManager(new LinearLayoutManager(this));
         binding.listApps.setAdapter(applicationAdapter);
+
+        Intent intent = new Intent(this, TopActivityIntentService.class);
+        startService(intent);
 
     }
 

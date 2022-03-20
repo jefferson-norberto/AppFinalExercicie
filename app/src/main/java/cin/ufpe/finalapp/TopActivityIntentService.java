@@ -45,6 +45,8 @@ public class TopActivityIntentService extends IntentService {
                     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
                     notificationManager.notify(NOTFY_ID, builder.build());
+
+                    Toast.makeText(this, "Look your Notifications", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -56,8 +58,6 @@ public class TopActivityIntentService extends IntentService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, "Service Destroyed"
-                , Toast.LENGTH_LONG).show();
     }
 
     private void createNotificationChannel() {

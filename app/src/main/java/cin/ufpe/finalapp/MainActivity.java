@@ -84,10 +84,6 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
         registerReceiver(wifiReceiver, intentFilter);
 
-        ActivityBroadcast activityBroadcast = new ActivityBroadcast();
-        IntentFilter intentFilter2 = new IntentFilter(ActivityManager.META_HOME_ALTERNATE);
-        registerReceiver(activityBroadcast, intentFilter2);
-
         batteryReceiver = new BatteryBroadcast(viewModel);
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         ifilter.addAction(BatteryManager.EXTRA_HEALTH);
@@ -110,14 +106,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-
-    public class ActivityBroadcast extends BroadcastReceiver{
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Intent it = new Intent(context, TopActivityIntentService.class);
-            startService(it);
-        }
     }
 }
