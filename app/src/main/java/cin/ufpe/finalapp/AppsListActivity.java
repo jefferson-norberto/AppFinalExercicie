@@ -27,10 +27,6 @@ public class AppsListActivity extends AppCompatActivity {
         binding = ActivityAppsListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        applicationAdapter = new ApplicationAdapter(listOfApps(), this);
-        binding.listApps.setLayoutManager(new LinearLayoutManager(this));
-        binding.listApps.setAdapter(applicationAdapter);
-
         Intent intent = new Intent(this, TopActivityIntentService.class);
         startService(intent);
 
@@ -39,6 +35,9 @@ public class AppsListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        applicationAdapter = new ApplicationAdapter(listOfApps(), this);
+        binding.listApps.setLayoutManager(new LinearLayoutManager(this));
+        binding.listApps.setAdapter(applicationAdapter);
     }
 
     private ArrayAdapter<Application> listOfApps(){

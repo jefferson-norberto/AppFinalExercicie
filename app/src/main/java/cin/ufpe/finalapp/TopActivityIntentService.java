@@ -39,19 +39,16 @@ public class TopActivityIntentService extends IntentService {
                             .setSmallIcon(R.drawable.ic_plug)
                             .setContentTitle("Top Activity")
                             .setContentText(name)
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                            .setGroup(NotificationCompat.GROUP_KEY_SILENT);
+                            .setSilent(true)
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
                     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
                     notificationManager.notify(NOTFY_ID, builder.build());
 
                     Toast.makeText(this, "Look your Notifications", Toast.LENGTH_SHORT).show();
                 }
 
             }
-
-
         }
     }
 
