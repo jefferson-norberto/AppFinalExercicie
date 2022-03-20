@@ -91,5 +91,9 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(wifiReceiver);
             wifiReceiver = null;
         }
+        if (batteryReceiver != null){
+            unregisterReceiver(batteryReceiver);
+            batteryReceiver = null;
+        }
     }
 }
