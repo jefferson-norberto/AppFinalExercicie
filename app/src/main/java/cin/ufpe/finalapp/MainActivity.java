@@ -1,7 +1,6 @@
 package cin.ufpe.finalapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
@@ -30,73 +29,31 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel.wifiEnable.observe(this,
                 enable -> {
-                    if(enable){
-                        binding.iconWifi.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wifi_on));
-                        binding.textChangedWifi.setText("Wifi Enable");
-                    }else{
-                        binding.iconWifi.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wifi_off_24));
-                        binding.textChangedWifi.setText("Wifi Disable");
-                    }
+                    binding.iconWifi.setImageDrawable(Util.setIconWifiEnable(this, enable));
+                    binding.textChangedWifi.setTextColor(Util.setColorEnable(this, enable));
+                    binding.textChangedWifi.setText(Util.setTextWifiEnable(this, enable));
         });
 
-        viewModel.batteryInUsb.observe(this,
-                state -> {
-                    if (state) {
-                        binding.textUsb.setText("Is in Ubs");
-                        binding.textUsb.setTextColor(ContextCompat.getColor(this, R.color.teal_700));
-                    } else {
-                        binding.textUsb.setText("Is not in Ubs");
-                        binding.textUsb.setTextColor(ContextCompat.getColor(this, R.color.grey));
-                    }
+        viewModel.batteryPlugged.observe(this,
+                plugged -> {
+                    binding.textUsb.setText(Util.setTextPlugged(plugged));
+                    binding.iconUsb.setImageDrawable(Util.setIconPlugged(this, plugged));
                 });
 
-        viewModel.batteryInPlug.observe(this,
+        viewModel.batteryState.observe(this,
                 state -> {
-                    if (state) {
-                        binding.textPlug.setText("Is In plug");
-                        binding.textPlug.setTextColor(ContextCompat.getColor(this, R.color.teal_700));
-                    } else {
-                        binding.textPlug.setText("Is Not in Plug");
-                        binding.textPlug.setTextColor(ContextCompat.getColor(this, R.color.grey));
-                    }
-                });
-
-        viewModel.batteryFull.observe(this,
-                state -> {
-                    if (state) {
-                        binding.iconBattery.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_battery));
-                        binding.iconBattery.setColorFilter(ContextCompat.getColor(this, R.color.teal_700));
-                        binding.textBatteryStatus.setText("Is Full");
-                        binding.textBatteryStatus.setTextColor(ContextCompat.getColor(this, R.color.teal_700));
-                    }
-                });
-
-        viewModel.batteryCharging.observe(this,
-                state -> {
-                    if (state) {
-                        binding.iconBattery.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_battery_charging));
-                        binding.iconBattery.setColorFilter(ContextCompat.getColor(this, R.color.yellow));
-                        binding.textBatteryStatus.setText("Is charging");
-                        binding.textBatteryStatus.setTextColor(ContextCompat.getColor(this, R.color.yellow));
-                    }
-                });
-
-        viewModel.batteryDischarging.observe(this,
-                state -> {
-                    if (state) {
-                        binding.iconBattery.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_battery));
-                        binding.iconBattery.setColorFilter(ContextCompat.getColor(this, R.color.orange));
-                        binding.textBatteryStatus.setText("Is discharging");
-                        binding.textBatteryStatus.setTextColor(ContextCompat.getColor(this, R.color.orange));
-                    }
-                });
+                    binding.iconBattery.setImageDrawable(Util.setIconBatteryState(this, state));
+                    binding.textBatteryStatus.setText(Util.setTextBatteryState(this, state));
+                    binding.iconBattery.setColorFilter(Util.setColorBatteryState(this, state));
+                    binding.textBatteryStatus.setTextColor(Util.setColorBatteryState(this, state));
+        });
 
         viewModel.batteryLevel.observe(this,
                 level -> {
                     binding.textPorcentBatttery.setText(level + " %");
                     binding.textPorcentBatttery.setTextColor(Util.setColorCharge(this, level));
                     binding.iconPorcentBattery.setColorFilter(Util.setColorCharge(this, level));
-                    binding.iconPorcentBattery.setImageDrawable(Util.setIconBattery(this, level));
+                    binding.iconPorcentBattery.setImageDrawable(Util.setIconBatteryCharger(this, level));
                 });
 
         viewModel.batteryHealth.observe(this,

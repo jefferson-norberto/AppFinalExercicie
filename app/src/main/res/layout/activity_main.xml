@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/iconWifi"
-        android:src="@drawable/ic_wait_wifi_changed"
+        android:src="@drawable/ic_wifi_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/ic_usb"
-        app:layout_constraintBottom_toTopOf="@id/iconPlug"
+        app:layout_constraintBottom_toTopOf="@id/textTimeForCharger"
         app:layout_constraintTop_toBottomOf="@id/iconPorcentBattery"
         app:layout_constraintStart_toStartOf="@id/iconPorcentBattery"
         app:layout_constraintEnd_toEndOf="@id/iconPorcentBattery"
@@ -114,27 +114,7 @@
         app:layout_constraintStart_toStartOf="@id/textBatteryStatus"
         app:layout_constraintTop_toTopOf="@id/iconUsb" />
 
-    <ImageView
-        android:id="@+id/iconPlug"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_plug"
-        app:layout_constraintBottom_toTopOf="@id/buttonGoListApps"
-        app:layout_constraintTop_toBottomOf="@id/iconUsb"
-        app:layout_constraintStart_toStartOf="@id/iconUsb"
-        app:layout_constraintEnd_toEndOf="@id/iconUsb"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        />
 
-    <TextView
-        android:id="@+id/textPlug"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Is True"
-        app:layout_constraintBottom_toBottomOf="@id/iconPlug"
-        app:layout_constraintStart_toStartOf="@id/textUsb"
-        app:layout_constraintTop_toTopOf="@id/iconPlug" />
 
     <TextView
         android:id="@+id/textTimeForCharger"
@@ -143,7 +123,7 @@
         android:text="Time for charger: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textPlug"
+        app:layout_constraintTop_toBottomOf="@id/textUsb"
         app:layout_constraintBottom_toTopOf="@id/buttonGoListApps"/>
 
     <Button

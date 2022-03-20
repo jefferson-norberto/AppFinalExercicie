@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat;
 
 public class Util {
 
-    public static Drawable setIconBattery(Context context, int level){
+    public static Drawable setIconBatteryCharger(Context context, int level){
         if(level >= 95){
             return ContextCompat.getDrawable(context, R.drawable.ic_battery);
         }else if(level >= 80){
@@ -29,7 +29,7 @@ public class Util {
     }
 
     public static int setColorCharge(Context context, int level){
-        if(level >= 80){
+        if(level >= 60){
             return ContextCompat.getColor(context, R.color.green);
         }else if (level > 15){
             return ContextCompat.getColor(context, R.color.yellow);
@@ -53,5 +53,82 @@ public class Util {
             return "Health Battery: Overheat";
         }
         return "Health Battery; Failed";
+    }
+
+    public static Drawable setIconWifiEnable(Context context, boolean enable){
+        if(enable){
+            return ContextCompat.getDrawable(context, R.drawable.ic_wifi_on);
+        }else{
+            return ContextCompat.getDrawable(context, R.drawable.ic_wifi_off_24);
+        }
+    }
+
+    public static String setTextWifiEnable(Context context, boolean enable){
+        if(enable){
+            return "Wifi Enable";
+        }else{
+            return "Wifi Disable";
+        }
+    }
+
+    public static int setColorEnable(Context context, boolean state){
+        if (state) {
+            return ContextCompat.getColor(context, R.color.teal_700);
+        } else {
+            return ContextCompat.getColor(context, R.color.grey);
+        }
+    }
+
+    public static String setTextPlugged(int state){
+        if (state == BatteryManager.BATTERY_PLUGGED_AC) {
+            return "Is Plugged in AC";
+        }else if (state == BatteryManager.BATTERY_PLUGGED_USB){
+            return "Is Plugged in UBS";
+        }else{
+            return "Is Not Plugged";
+        }
+    }
+
+    public static int setColorBatteryState(Context context, int state){
+        if(state == BatteryManager.BATTERY_STATUS_DISCHARGING){
+            return ContextCompat.getColor(context, R.color.orange);
+        }else if(state == BatteryManager.BATTERY_STATUS_CHARGING){
+            return ContextCompat.getColor(context, R.color.yellow);
+        }else if (state == BatteryManager.BATTERY_STATUS_FULL){
+            return ContextCompat.getColor(context, R.color.teal_700);
+        }
+        return ContextCompat.getColor(context, R.color.black);
+    }
+
+    public static String setTextBatteryState(Context context, int state){
+        if(state == BatteryManager.BATTERY_STATUS_DISCHARGING){
+            return "Is discharging";
+        }else if(state == BatteryManager.BATTERY_STATUS_CHARGING){
+            return "Is charging";
+        }else if (state == BatteryManager.BATTERY_STATUS_FULL){
+            return "Is Full";
+        }
+        return "Erro!";
+    }
+
+    public static Drawable setIconBatteryState(Context context, int state){
+        if(state == BatteryManager.BATTERY_STATUS_DISCHARGING){
+            return ContextCompat.getDrawable(context, R.drawable.ic_battery);
+        }else if(state == BatteryManager.BATTERY_STATUS_CHARGING){
+            return ContextCompat.getDrawable(context, R.drawable.ic_battery_charging);
+        }else if (state == BatteryManager.BATTERY_STATUS_FULL){
+            return ContextCompat.getDrawable(context, R.drawable.ic_battery_alert);
+        }
+        return ContextCompat.getDrawable(context, R.drawable.ic_battery_unknown);
+    }
+
+    public static Drawable setIconPlugged(Context context, int state) {
+        if (state == BatteryManager.BATTERY_PLUGGED_AC) {
+            return ContextCompat.getDrawable(context, R.drawable.ic_plug);
+        }else if (state == BatteryManager.BATTERY_PLUGGED_USB){
+            return ContextCompat.getDrawable(context, R.drawable.ic_usb);
+        }else{
+            return ContextCompat.getDrawable(context, R.drawable.ic_block_);
+        }
     }
 }
