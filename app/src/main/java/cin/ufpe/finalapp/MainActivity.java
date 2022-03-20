@@ -63,17 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel.timeForCharger.observe(this,
                 time -> {
-                    if (time != -1) {
-                        int minuts = (int) (time / 60000);
-                        int hours = minuts / 60;
-                        minuts = minuts % 60;
-                        binding.textTimeForCharger.setText("Time reming for charger: " +
-                                hours + " h and " +
-                                minuts + " min");
-                        binding.textTimeForCharger.setVisibility(View.VISIBLE);
-                    } else {
-                        binding.textTimeForCharger.setVisibility(View.GONE);
-                    }
+                        binding.textTimeForCharger.setText(Util.setTextTimeForCharger(time));
                 });
 
         binding.buttonGoListApps.setOnClickListener(view -> {

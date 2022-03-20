@@ -3,6 +3,7 @@ package cin.ufpe.finalapp;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.BatteryManager;
+import android.view.View;
 
 import androidx.core.content.ContextCompat;
 
@@ -129,6 +130,24 @@ public class Util {
             return ContextCompat.getDrawable(context, R.drawable.ic_usb);
         }else{
             return ContextCompat.getDrawable(context, R.drawable.ic_block_);
+        }
+    }
+
+    public static String setTextTimeForCharger(Long time){
+        if (time != -1) {
+            int minutes = (int) (time / 60000);
+            int hours = minutes / 60;
+            minutes = minutes % 60;
+            if(hours > 0){
+                return "Time reming for charger: " +
+                        hours + " h and " +
+                        minutes + " min";
+            }else{
+                return "Time reming for charger: " +
+                        minutes + " min";
+            }
+        } else {
+            return "";
         }
     }
 }
