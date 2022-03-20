@@ -8,9 +8,6 @@ public class MainActivityViewModel extends ViewModel {
     private final MutableLiveData<Boolean> _wifiEnable = new MutableLiveData<>(false);
     public LiveData<Boolean> wifiEnable = _wifiEnable;
 
-    private final MutableLiveData<Boolean> _batteryInUsb = new MutableLiveData<>(false);
-    private final MutableLiveData<Boolean> _batteryInPlug = new MutableLiveData<>(false);
-
     private final MutableLiveData<Integer> _batteryPlugged = new MutableLiveData<>(0);
     public LiveData<Integer> batteryPlugged = _batteryPlugged;
 
@@ -18,13 +15,12 @@ public class MainActivityViewModel extends ViewModel {
     public LiveData<Integer> batteryState = _batteryState;
 
     private final MutableLiveData<Integer> _batteryLevel = new MutableLiveData<>(0);
-    private final MutableLiveData<Integer> _batteryHealth = new MutableLiveData<>(0);
-    private final MutableLiveData<Long> _timeForCharger = new MutableLiveData<Long>(0L);
-
-    public LiveData<Boolean> batteryInUsb = _batteryInUsb;
-    public LiveData<Boolean> batteryInPlug = _batteryInPlug;
     public LiveData<Integer> batteryLevel = _batteryLevel;
+
+    private final MutableLiveData<Integer> _batteryHealth = new MutableLiveData<>(0);
     public LiveData<Integer> batteryHealth = _batteryHealth;
+
+    private final MutableLiveData<Long> _timeForCharger = new MutableLiveData<Long>(0L);
     public LiveData<Long> timeForCharger = _timeForCharger;
 
     public void setBatteryState(int state){
@@ -37,14 +33,6 @@ public class MainActivityViewModel extends ViewModel {
 
     public void setWifiEnable(boolean enable){
         _wifiEnable.postValue(enable);
-    }
-
-    public void setBatteryInPlug(boolean state){
-        _batteryInPlug.postValue(state);
-    }
-
-    public void setBatteryInUsb(boolean state){
-        _batteryInUsb.postValue(state);
     }
 
     public void setBatteryLevel(int level){

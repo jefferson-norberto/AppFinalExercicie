@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         viewModel.batteryLevel.observe(this,
                 level -> {
                     binding.textPorcentBatttery.setText(level + " %");
-                    binding.textPorcentBatttery.setTextColor(Util.setColorCharge(this, level));
-                    binding.iconPorcentBattery.setColorFilter(Util.setColorCharge(this, level));
+                    binding.textPorcentBatttery.setTextColor(Util.setColorCharger(this, level));
+                    binding.iconPorcentBattery.setColorFilter(Util.setColorCharger(this, level));
                     binding.iconPorcentBattery.setImageDrawable(Util.setIconBatteryCharger(this, level));
                 });
 

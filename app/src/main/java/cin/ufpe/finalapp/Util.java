@@ -28,7 +28,7 @@ public class Util {
         }
     }
 
-    public static int setColorCharge(Context context, int level){
+    public static int setColorCharger(Context context, int level){
         if(level >= 60){
             return ContextCompat.getColor(context, R.color.green);
         }else if (level > 15){
